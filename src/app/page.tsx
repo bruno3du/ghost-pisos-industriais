@@ -1,101 +1,245 @@
+import Link from "next/link";
 import Image from "next/image";
+
+const services = [
+  {
+    title: "Piso Epóxi",
+    description:
+      "Pisos duráveis e resistentes a produtos químicos, perfeitos para ambientes industriais",
+    icon: "/images/epoxy-icon.png",
+    link: "/services/epoxy-flooring",
+  },
+  {
+    title: "Concreto Polido",
+    description:
+      "Pisos sustentáveis, de baixa manutenção e com excelente durabilidade",
+    icon: "/images/concrete-icon.png",
+    link: "/services/polished-concrete",
+  },
+  {
+    title: "Reparos de Piso",
+    description: "Restaure seu piso industrial à sua condição original",
+    icon: "/images/repair-icon.png",
+    link: "/services/floor-repairs",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <main className="flex min-h-screen flex-col items-center">
+      {/* Hero Section */}
+      <section className="w-full py-20 bg-gradient-to-r from-gray-800 to-gray-900 text-white">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="flex flex-col md:flex-row items-center">
+            <div className="md:w-1/2 mb-10 md:mb-0">
+              <h1 className="text-4xl md:text-5xl font-bold mb-4">
+                Soluções Premium em Pisos Industriais
+              </h1>
+              <p className="text-xl mb-8">
+                Sistemas de pisos duráveis, seguros e personalizados para
+                instalações industriais
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="/contact"
+                  className="px-6 py-3 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition"
+                >
+                  Solicite um Orçamento Grátis
+                </Link>
+                <Link
+                  href="/services"
+                  className="px-6 py-3 bg-transparent border border-white text-white rounded-md font-medium hover:bg-white/10 transition"
+                >
+                  Nossos Serviços
+                </Link>
+              </div>
+            </div>
+            <div className="md:w-1/2">
+              <div className="relative h-[400px] w-full rounded-xl overflow-hidden">
+                <Image
+                  src="/images/hero-floor.jpg"
+                  alt="Piso Industrial"
+                  fill
+                  priority
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="w-full py-16 bg-white">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Nossos Serviços
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {services.map((service, index) => (
+              <div
+                key={index}
+                className="bg-gray-50 rounded-lg p-6 shadow-sm hover:shadow-md transition"
+              >
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                  <Image
+                    src={service.icon}
+                    alt={service.title}
+                    width={40}
+                    height={40}
+                  />
+                </div>
+                <h3 className="text-xl font-bold mb-2">{service.title}</h3>
+                <p className="text-gray-600 mb-4">{service.description}</p>
+                <Link
+                  href={service.link}
+                  className="text-blue-600 font-medium hover:underline"
+                >
+                  Saiba mais →
+                </Link>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-10">
+            <Link
+              href="/services"
+              className="px-6 py-3 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition"
+            >
+              Ver Todos os Serviços
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="w-full py-16 bg-gray-50">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <h2 className="text-3xl font-bold text-center mb-12">
+            O Que Nossos Clientes Dizem
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                quote:
+                  "A qualidade do trabalho superou nossas expectativas. O piso do nosso armazém nunca esteve melhor.",
+                author: "João Silva",
+                company: "ABC Manufatura",
+              },
+              {
+                quote:
+                  "Equipe profissional, excelente comunicação e resultados extraordinários. Altamente recomendado.",
+                author: "Maria Rodriguez",
+                company: "XYZ Logística",
+              },
+              {
+                quote:
+                  "Concluído dentro do prazo e do orçamento. O piso epóxi transformou nossa área de produção.",
+                author: "David Santos",
+                company: "Engenharia de Precisão Ltda",
+              },
+            ].map((testimonial, index) => (
+              <div key={index} className="bg-white p-6 rounded-lg shadow">
+                <div className="flex mb-4">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <span key={star} className="text-yellow-500">
+                      ★
+                    </span>
+                  ))}
+                </div>
+                <p className="text-gray-700 mb-4 italic">
+                  "{testimonial.quote}"
+                </p>
+                <div>
+                  <p className="font-bold">{testimonial.author}</p>
+                  <p className="text-gray-600 text-sm">{testimonial.company}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Recent Blog Posts */}
+      <section className="w-full py-16 bg-white">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Últimas do Nosso Blog
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Bem-vindo ao Nosso Blog de Pisos Industriais",
+                excerpt:
+                  "Conheça as últimas tendências em pisos industriais e como nossos serviços podem ajudar seu negócio.",
+                date: "4 de Março, 2025",
+                image: "/images/blog/welcome.jpg",
+                slug: "welcome-post",
+              },
+              {
+                title:
+                  "Piso Epóxi vs. Concreto Polido: Qual é o Certo para sua Instalação?",
+                excerpt:
+                  "Uma comparação de duas opções populares de pisos industriais para ajudá-lo a fazer a melhor escolha para suas necessidades específicas.",
+                date: "5 de Março, 2025",
+                image: "/images/blog/comparison.jpg",
+                slug: "epoxy-vs-concrete",
+              },
+            ].map((post, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition"
+              >
+                <div className="relative h-48 w-full">
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                </div>
+                <div className="p-6">
+                  <p className="text-sm text-gray-500 mb-2">{post.date}</p>
+                  <h3 className="text-xl font-bold mb-2">{post.title}</h3>
+                  <p className="text-gray-600 mb-4">{post.excerpt}</p>
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="text-blue-600 font-medium hover:underline"
+                  >
+                    Ler mais →
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-10">
+            <Link
+              href="/blog"
+              className="px-6 py-3 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition"
+            >
+              Ver Todos os Posts
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="w-full py-16 bg-blue-600 text-white">
+        <div className="container mx-auto px-4 max-w-6xl text-center">
+          <h2 className="text-3xl font-bold mb-4">
+            Pronto para Transformar seu Piso Industrial?
+          </h2>
+          <p className="text-xl mb-8 max-w-2xl mx-auto">
+            Entre em contato conosco hoje para uma consulta gratuita e orçamento
+            para seu projeto de piso industrial.
+          </p>
+          <Link
+            href="/contact"
+            className="px-8 py-4 bg-white text-blue-600 rounded-md font-bold hover:bg-gray-100 transition"
+          >
+            Comece Agora
+          </Link>
+        </div>
+      </section>
+    </main>
   );
 }
