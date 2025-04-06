@@ -1,12 +1,12 @@
-import { readFile, readdir } from "node:fs/promises";
-import path from "node:path";
-import matter from "gray-matter";
-import { MDXRemote } from "next-mdx-remote/rsc";
+import { PageProps } from "@/app/@types";
 import { MDXProvider } from "@mdx-js/react";
+import matter from "gray-matter";
+import { Metadata } from "next";
+import { MDXRemote } from "next-mdx-remote/rsc";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { Metadata } from "next";
-import { PageProps } from "@/app/@types";
+import { readFile, readdir } from "node:fs/promises";
+import path from "node:path";
 
 type BlogPost = {
   frontmatter: {
@@ -77,7 +77,7 @@ async function getBlogPost(slug: string): Promise<BlogPost | null> {
       frontmatter: data as BlogPost["frontmatter"],
       content,
     };
-  } catch (error) {
+  } catch {
     return null;
   }
 }
@@ -87,6 +87,7 @@ export async function generateMetadata({
   params,
 }: PageProps<{ slug: string }>): Promise<Metadata> {
   const post = await getBlogPost((await params).slug);
+  console.log("🚀 ~ post:", post);
 
   if (!post) {
     return {

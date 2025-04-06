@@ -1,7 +1,6 @@
-'use client';
+"use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
 
 export default function Header() {
@@ -14,25 +13,40 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <div className="text-xl font-bold text-gray-900">
-              <span className="text-blue-600">Piso</span> Industrial
+              <span className="text-blue-600">Ghost</span> Pisos Industriais
             </div>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            <Link href="/" className="text-gray-700 hover:text-blue-600 font-medium">
+            <Link
+              href="/"
+              className="text-gray-700 hover:text-blue-600 font-medium"
+            >
               Início
             </Link>
-            <Link href="/services" className="text-gray-700 hover:text-blue-600 font-medium">
+            <Link
+              href="/services"
+              className="text-gray-700 hover:text-blue-600 font-medium"
+            >
               Serviços
             </Link>
-            <Link href="/portfolio" className="text-gray-700 hover:text-blue-600 font-medium">
+            <Link
+              href="/portfolio"
+              className="text-gray-700 hover:text-blue-600 font-medium"
+            >
               Portfólio
             </Link>
-            <Link href="/blog" className="text-gray-700 hover:text-blue-600 font-medium">
+            <Link
+              href="/blog"
+              className="text-gray-700 hover:text-blue-600 font-medium"
+            >
               Blog
             </Link>
-            <Link href="/contact" className="text-gray-700 hover:text-blue-600 font-medium">
+            <Link
+              href="/contact"
+              className="text-gray-700 hover:text-blue-600 font-medium"
+            >
               Contato
             </Link>
           </nav>
@@ -45,12 +59,32 @@ export default function Header() {
           >
             <span className="sr-only">Abrir menu</span>
             {mobileMenuOpen ? (
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              <svg
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               </svg>
             ) : (
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              <svg
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               </svg>
             )}
           </button>
