@@ -1,34 +1,25 @@
 import { PageProps } from "@/app/@types";
+import { post as postApi } from "@/provider/post";
 import { MDXProvider } from "@mdx-js/react";
-import matter from "gray-matter";
 import { Metadata } from "next";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { readFile, readdir } from "node:fs/promises";
+import { readdir } from "node:fs/promises";
 import path from "node:path";
 
-type BlogPost = {
-  frontmatter: {
-    title: string;
-    date: string;
-    coverImage?: string;
-    description?: string;
-  };
-  content: string;
-};
 
 type MdxComponents = React.ComponentProps<typeof MDXProvider>["components"];
 
-export const mdxComponents: MdxComponents = {
+const mdxComponents: MdxComponents = {
   // ...
   Image,
-  h1: (props) => <h1 className="text-4xl font-bold mb-6" {...props} />,
-  h2: (props) => <h2 className="text-3xl font-bold mb-4" {...props} />,
-  h3: (props) => <h3 className="text-2xl font-bold mb-3" {...props} />,
-  h4: (props) => <h4 className="text-xl font-bold mb-2" {...props} />,
-  h5: (props) => <h5 className="text-lg font-bold mb-2" {...props} />,
-  h6: (props) => <h6 className="text-base font-bold mb-2" {...props} />,
+  h1: (props) => <h1 className="text-4xl font-bold mb-6 mt-3" {...props} />,
+  h2: (props) => <h2 className="text-3xl font-bold mb-4 mt-3" {...props} />,
+  h3: (props) => <h3 className="text-2xl font-bold mb-3 mt-2" {...props} />,
+  h4: (props) => <h4 className="text-xl font-bold mb-2 mt-2" {...props} />,
+  h5: (props) => <h5 className="text-lg font-bold mb-2 mt-2" {...props} />,
+  h6: (props) => <h6 className="text-base font-bold mb-2 mt-1" {...props} />,
   p: (props) => <p className="mb-4" {...props} />,
   ul: (props) => <ul className="list-disc list-inside mb-4" {...props} />,
   ol: (props) => <ol className="list-decimal list-inside mb-4" {...props} />,
@@ -62,32 +53,13 @@ export const mdxComponents: MdxComponents = {
   hr: (props) => <hr className="border-gray-300 my-6" {...props} />,
 };
 
-// Função para obter um post do blog pelo slug
-async function getBlogPost(slug: string): Promise<BlogPost | null> {
-  const contentDirectory = path.join(process.cwd(), "src/content/blog");
-  const fullPath = path.join(contentDirectory, `${slug}.md`);
 
-  try {
-    const fileContents = await readFile(fullPath, "utf8");
-    const { data, content } = matter(fileContents);
-    console.log("🚀 ~ getBlogPost ~ content:", content);
-    console.log("🚀 ~ getBlogPost ~ data:", data);
-
-    return {
-      frontmatter: data as BlogPost["frontmatter"],
-      content,
-    };
-  } catch {
-    return null;
-  }
-}
 
 // Função para gerar metadados dinâmicos para SEO
 export async function generateMetadata({
   params,
 }: PageProps<{ slug: string }>): Promise<Metadata> {
-  const post = await getBlogPost((await params).slug);
-  console.log("🚀 ~ post:", post);
+  const post = await postApi.getPost((await params).slug);
 
   if (!post) {
     return {
@@ -135,7 +107,7 @@ export async function generateStaticParams() {
 export default async function BlogPostPage({
   params,
 }: PageProps<{ slug: string }>) {
-  const post = await getBlogPost((await params).slug);
+  const post = await postApi.getPost((await params).slug);
 
   if (!post) {
     notFound();

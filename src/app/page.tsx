@@ -1,3 +1,5 @@
+import { Hero } from "@/page/home/hero";
+import { post } from "@/provider/post";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -24,51 +26,33 @@ const services = [
   },
 ];
 
+// const posts = [
+//   {
+//     title: "Bem-vindo ao Nosso Blog de Pisos Industriais",
+//     excerpt:
+//       "Conheça as últimas tendências em pisos industriais e como nossos serviços podem ajudar seu negócio.",
+//     date: "4 de Março, 2025",
+//     image: "/images/blog/welcome.jpg",
+//     slug: "welcome-post",
+//   },
+//   {
+//     title:
+//       "Piso Epóxi vs. Concreto Polido: Qual é o Certo para sua Instalação?",
+//     excerpt:
+//       "Uma comparação de duas opções populares de pisos industriais para ajudá-lo a fazer a melhor escolha para suas necessidades específicas.",
+//     date: "5 de Março, 2025",
+//     image: "/images/blog/comparison.jpg",
+//     slug: "epoxy-vs-concrete",
+//   },
+// ];
+
 export default function Home() {
+  const posts = post.getPosts()
   return (
     <main className="flex min-h-screen flex-col items-center">
       {/* Hero Section */}
-      <section className="w-full py-20 bg-gradient-to-r from-gray-800 to-gray-900 text-white">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="flex flex-col md:flex-row items-center">
-            <div className="md:w-1/2 mb-10 md:mb-0">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                Soluções Premium em Pisos Industriais
-              </h1>
-              <p className="text-xl mb-8">
-                Sistemas de pisos duráveis, seguros e personalizados para
-                instalações industriais
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  href="/contact"
-                  className="px-6 py-3 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition"
-                >
-                  Solicite um Orçamento Grátis
-                </Link>
-                <Link
-                  href="/services"
-                  className="px-6 py-3 bg-transparent border border-white text-white rounded-md font-medium hover:bg-white/10 transition"
-                >
-                  Nossos Serviços
-                </Link>
-              </div>
-            </div>
-            <div className="md:w-1/2">
-              <div className="relative h-[400px] w-full rounded-xl overflow-hidden">
-                <Image
-                  src="/images/hero-floor.jpg"
-                  alt="Piso Industrial"
-                  fill
-                  priority
-                  style={{ objectFit: "cover" }}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      
+      <Hero />
       {/* Services Section */}
       <section className="w-full py-16 bg-white">
         <div className="container mx-auto px-4 max-w-6xl">
@@ -112,7 +96,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="w-full py-16 bg-gray-50">
+      {/* <section className="w-full py-16 bg-gray-50">
         <div className="container mx-auto px-4 max-w-6xl">
           <h2 className="text-3xl font-bold text-center mb-12">
             O Que Nossos Clientes Dizem
@@ -157,7 +141,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Recent Blog Posts */}
       <section className="w-full py-16 bg-white">
@@ -166,39 +150,21 @@ export default function Home() {
             Últimas do Nosso Blog
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Bem-vindo ao Nosso Blog de Pisos Industriais",
-                excerpt:
-                  "Conheça as últimas tendências em pisos industriais e como nossos serviços podem ajudar seu negócio.",
-                date: "4 de Março, 2025",
-                image: "/images/blog/welcome.jpg",
-                slug: "welcome-post",
-              },
-              {
-                title:
-                  "Piso Epóxi vs. Concreto Polido: Qual é o Certo para sua Instalação?",
-                excerpt:
-                  "Uma comparação de duas opções populares de pisos industriais para ajudá-lo a fazer a melhor escolha para suas necessidades específicas.",
-                date: "5 de Março, 2025",
-                image: "/images/blog/comparison.jpg",
-                slug: "epoxy-vs-concrete",
-              },
-            ].map((post, index) => (
+            {posts.map((post, index) => (
               <div
                 key={index}
                 className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition"
               >
                 <div className="relative h-48 w-full">
                   <Image
-                    src={post.image}
+                    src={post.coverImage}
                     alt={post.title}
                     fill
                     style={{ objectFit: "cover" }}
                   />
                 </div>
                 <div className="p-6">
-                  <p className="text-sm text-gray-500 mb-2">{post.date}</p>
+                  <p className="text-sm text-gray-500 mb-2">{new Date(post.date).toLocaleDateString("pt-BR")}</p>
                   <h3 className="text-xl font-bold mb-2">{post.title}</h3>
                   <p className="text-gray-600 mb-4">{post.excerpt}</p>
                   <Link
@@ -236,7 +202,7 @@ export default function Home() {
             href="/contact"
             className="px-8 py-4 bg-white text-blue-600 rounded-md font-bold hover:bg-gray-100 transition"
           >
-            Comece Agora
+            Solicitar Orçamento
           </Link>
         </div>
       </section>

@@ -1,8 +1,8 @@
+import Footer from "@/components/layout/Footer";
+import Header from "@/components/layout/Header";
+import WhatsAppButton from "@/components/ui-element/whatsapp-button";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
-import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import "./globals.css";
 
 const geistSans = Geist({

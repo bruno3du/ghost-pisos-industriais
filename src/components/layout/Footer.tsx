@@ -1,14 +1,17 @@
+import logo from "@/assets/images/logo-white.png";
+import { Mail } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
   return (
     <footer className="bg-gray-900 text-white">
-      <div className="container mx-auto px-4 max-w-6xl py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="container mx-auto px-4  py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Company Info */}
-          <div className="col-span-1 md:col-span-1">
-            <div className="text-xl font-bold mb-4">
-              <span className="text-blue-400">Piso</span> Industrial
+          <div className="col-span-1 lg:col-span-1">
+            <div className="relative w-56 h-[72px] aspect-video mb-4">
+              <Image src={logo} alt="logo" fill />
             </div>
             <p className="text-gray-400 mb-4">
               Fornecendo soluções de piso premium para instalações industriais
@@ -77,14 +80,6 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/portfolio"
-                  className="text-gray-400 hover:text-white"
-                >
-                  Portfólio
-                </Link>
-              </li>
-              <li>
                 <Link href="/blog" className="text-gray-400 hover:text-white">
                   Blog
                 </Link>
@@ -106,7 +101,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="/services/epoxy-flooring"
+                  href="/services#epoxy-flooring"
                   className="text-gray-400 hover:text-white"
                 >
                   Piso Epóxi
@@ -114,7 +109,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/services/polished-concrete"
+                  href="/services#polished-concrete"
                   className="text-gray-400 hover:text-white"
                 >
                   Concreto Polido
@@ -122,35 +117,19 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/services/floor-repairs"
+                  href="/services#floor-repairs"
                   className="text-gray-400 hover:text-white"
                 >
                   Reparos de Piso
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services/floor-coatings"
-                  className="text-gray-400 hover:text-white"
-                >
-                  Revestimentos de Piso
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services/floor-markings"
-                  className="text-gray-400 hover:text-white"
-                >
-                  Marcações de Piso
                 </Link>
               </li>
             </ul>
           </div>
 
           {/* Contact */}
-          <div>
+          <div >
             <h3 className="text-lg font-bold mb-4">Contato</h3>
-            <ul className="space-y-2 text-gray-400">
+            <ul className="flex flex-col gap-3 text-gray-400">
               <li className="flex items-start">
                 <svg
                   className="h-6 w-6 mr-2"
@@ -196,20 +175,8 @@ export default function Footer() {
                 <span>(19) 98325-6973</span>
               </li>
               <li className="flex items-center">
-                <svg
-                  className="h-6 w-6 mr-2"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
-                </svg>
-                <span>contato@pisoindustrial.com.br</span>
+                <Mail className="size-6 mr-2 shrink-0" />
+                <span >contato@ghostpisosindustriais.com</span>
               </li>
             </ul>
           </div>
@@ -217,7 +184,7 @@ export default function Footer() {
 
         <div className="border-t border-gray-800 mt-12 pt-8 text-sm text-gray-400 text-center">
           <p>
-            &copy; {new Date().getFullYear()} Soluções em Piso Industrial. Todos
+            &copy; {new Date().getFullYear()} Ghost Soluções em Piso Industrial. Todos
             os direitos reservados.
           </p>
         </div>

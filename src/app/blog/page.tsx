@@ -1,46 +1,9 @@
-import fs from "fs";
-import matter from "gray-matter";
+import { post } from "@/provider/post";
 import Image from "next/image";
 import Link from "next/link";
-import path from "path";
-
-interface BlogPost {
-  date: Date;
-  slug: string;
-  coverImage: string;
-  title: string;
-  excerpt: string;
-}
-
-// Function to get all blog posts
-async function getBlogPosts() {
-  const contentDirectory = path.join(process.cwd(), "src/content/blog");
-  const fileNames = fs.readdirSync(contentDirectory);
-
-  const posts = fileNames.map((fileName) => {
-    const slug = fileName.replace(/\.md$/, "");
-    const fullPath = path.join(contentDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, "utf8");
-    const { data } = matter(fileContents);
-
-    return {
-      slug,
-      ...data,
-    } as BlogPost;
-  });
-
-  // Sort posts by date
-  return posts.sort((a, b) => {
-    if (a.date < b.date) {
-      return 1;
-    } else {
-      return -1;
-    }
-  });
-}
 
 export default async function BlogPage() {
-  const posts = await getBlogPosts();
+  const posts =  post.getPosts();
 
   return (
     <main className="flex min-h-screen flex-col items-center py-24">

@@ -1,5 +1,7 @@
 "use client";
 
+import logo from "@/assets/images/logo-black.png";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -11,10 +13,14 @@ export default function Header() {
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
-            <div className="text-xl font-bold text-gray-900">
+          <Link
+            href="/"
+            className="flex items-center relative w-56 h-[72px] aspect-video"
+          >
+            {/* <div className="text-xl font-bold text-gray-900">
               <span className="text-blue-600">Ghost</span> Pisos Industriais
-            </div>
+            </div> */}
+            <Image src={logo} alt="logo" fill />
           </Link>
 
           {/* Desktop Navigation */}
@@ -30,12 +36,6 @@ export default function Header() {
               className="text-gray-700 hover:text-blue-600 font-medium"
             >
               Serviços
-            </Link>
-            <Link
-              href="/portfolio"
-              className="text-gray-700 hover:text-blue-600 font-medium"
-            >
-              Portfólio
             </Link>
             <Link
               href="/blog"
@@ -108,13 +108,6 @@ export default function Header() {
               onClick={() => setMobileMenuOpen(false)}
             >
               Serviços
-            </Link>
-            <Link
-              href="/portfolio"
-              className="block px-3 py-2 text-gray-700 hover:bg-gray-50 hover:text-blue-600 rounded-md font-medium"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Portfólio
             </Link>
             <Link
               href="/blog"

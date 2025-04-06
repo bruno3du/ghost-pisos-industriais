@@ -1,6 +1,6 @@
-import Link from "next/link";
-import Image from "next/image";
 import { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Nossos Serviços | Soluções em Piso Industrial",
@@ -68,7 +68,7 @@ export default function ServicesPage() {
             <div
               key={service.id}
               id={service.id}
-              className={`flex flex-col ${
+              className={`flex flex-col  ${
                 index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
               } gap-8 md:gap-12`}
             >

@@ -2,7 +2,7 @@
 title: "Bem-vindo ao Nosso Blog de Pisos Industriais"
 date: "2025-03-04"
 excerpt: "Conheça as últimas tendências em pisos industriais e como nossos serviços podem ajudar seu negócio."
-coverImage: "/images/blog/welcome.jpg"
+coverImage: "/images/blog/welcome.png"
 ---
 
 # Bem-vindo ao Nosso Blog de Pisos Industriais
