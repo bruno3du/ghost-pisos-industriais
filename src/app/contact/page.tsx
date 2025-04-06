@@ -4,7 +4,7 @@ import { sendEmail } from "./action/send-email";
 import SubmitButton from "./components/submit-button";
 
 export const metadata: Metadata = {
-  title: "Contato | Soluções em Piso Industrial",
+  title: "Contato | Ghost Pisos Industriais",
   description:
     "Entre em contato com nossos especialistas em piso industrial para uma consulta gratuita e orçamento.",
 };

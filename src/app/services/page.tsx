@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Nossos Serviços | Soluções em Piso Industrial",
+  title: "Nossos Serviços | Ghost Pisos Industriais",
   description:
     "Serviços abrangentes de piso industrial incluindo piso epóxi, concreto polido, reparos de piso, revestimentos e marcações.",
 };

@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Portfólio | Soluções em Piso Industrial",
+  title: "Portfólio | Ghost Pisos Industriais",
   description:
     "Veja nosso portfólio de projetos de pisos industriais concluídos, incluindo pisos epóxi, concreto polido e reparos de piso.",
 };

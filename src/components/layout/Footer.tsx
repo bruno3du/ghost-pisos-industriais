@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="col-span-1 lg:col-span-1">
-            <div className="relative w-56 h-[72px] aspect-video mb-4">
+            <div className="flex items-center mb-4 relative w-40 md:w-56 h-[52px] md:h-[72px] aspect-video">
               <Image src={logo} alt="logo" fill />
             </div>
             <p className="text-gray-400 mb-4">
@@ -172,11 +172,11 @@ export default function Footer() {
                     d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                   />
                 </svg>
-                <span>(19) 98325-6973</span>
+                <Link href="tel:+5519983256973">(19) 98325-6973</Link>
               </li>
               <li className="flex items-center">
                 <Mail className="size-6 mr-2 shrink-0" />
-                <span >contato@ghostpisosindustriais.com</span>
+                <Link href="mailto:contato@ghostpisosindustriais.com">contato@ghostpisosindustriais.com</Link>
               </li>
             </ul>
           </div>

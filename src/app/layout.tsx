@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Soluções em Piso Industrial | Pisos Premium para Instalações Industriais",
+  title: "Ghost Pisos Industriais | Pisos Premium para Instalações Industriais",
   description: "Especialistas em soluções de piso industrial incluindo piso epóxi, concreto polido e reparos de piso para manufatura, armazenagem e instalações industriais.",
 };
 
@@ -28,6 +28,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body
+        suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div className="flex flex-col min-h-screen">

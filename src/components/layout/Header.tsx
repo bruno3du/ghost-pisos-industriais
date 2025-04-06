@@ -15,11 +15,8 @@ export default function Header() {
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center relative w-56 h-[72px] aspect-video"
+            className="flex items-center relative w-40 md:w-56 h-[52px] md:h-[72px] aspect-video"
           >
-            {/* <div className="text-xl font-bold text-gray-900">
-              <span className="text-blue-600">Ghost</span> Pisos Industriais
-            </div> */}
             <Image src={logo} alt="logo" fill />
           </Link>
 
