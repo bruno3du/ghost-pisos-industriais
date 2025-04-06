@@ -9,20 +9,20 @@ const services = [
     description:
       "Pisos duráveis e resistentes a produtos químicos, perfeitos para ambientes industriais",
     icon: "/images/epoxy-icon.png",
-    link: "/services/epoxy-flooring",
+    link: "/services#epoxy-flooring",
   },
   {
     title: "Concreto Polido",
     description:
       "Pisos sustentáveis, de baixa manutenção e com excelente durabilidade",
     icon: "/images/concrete-icon.png",
-    link: "/services/polished-concrete",
+    link: "/services#polished-concrete",
   },
   {
     title: "Reparos de Piso",
     description: "Restaure seu piso industrial à sua condição original",
     icon: "/images/repair-icon.png",
-    link: "/services/floor-repairs",
+    link: "/services#floor-repairs",
   },
 ];
 
