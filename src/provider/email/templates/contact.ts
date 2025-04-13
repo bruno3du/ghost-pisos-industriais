@@ -1,17 +1,17 @@
 export const contactTemplate = ({
-    company,
-    email,
-    firstName,
-    lastName,
-    message,
-    phone
+  company,
+  email,
+  firstName,
+  lastName,
+  message,
+  phone,
 }: {
-    company: string;
-    email: string;
-    firstName: string;
-    lastName: string;
-    message: string;
-    phone: string;
+  company: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  message: string;
+  phone: string;
 }) => `
 <!DOCTYPE html>
 <html>
@@ -89,4 +89,4 @@ export const contactTemplate = ({
     </div>
 </body>
 </html>
-`; 
+`;

@@ -1,69 +1,38 @@
-import fs from "fs";
-import matter from "gray-matter";
-import { readFile } from "node:fs/promises";
-import path from "node:path";
-
-interface IPost {
-    date: Date;
-    slug: string;
-    coverImage: string;
-    title: string;
-    excerpt: string;
-}
-
-type BlogPost = {
-    frontmatter: {
-        title: string;
-        date: string;
-        coverImage?: string;
-        description?: string;
-    };
-    content: string;
-};
+import { strapiClient } from '@/service/strapi.config';
+import { Response } from '../types/response';
+import { Post as PostType } from './types';
 
 export class Post {
-    getPosts() {
-        const contentDirectory = path.join(process.cwd(), "src/content/blog");
-        const fileNames = fs.readdirSync(contentDirectory);
+  async getPosts() {
+    try {
+      const response = (await strapiClient.collection('articles').find()) as unknown as Response<
+        PostType[]
+      >;
 
-        const posts = fileNames.map((fileName) => {
-            const slug = fileName.replace(/\.md$/, "");
-            const fullPath = path.join(contentDirectory, fileName);
-            const fileContents = fs.readFileSync(fullPath, "utf8");
-            const { data } = matter(fileContents);
+      console.log(response.data[0].cover);
 
-            return {
-                slug,
-                ...data,
-            } as IPost;
-        });
-
-        // Sort posts by date
-        return posts.sort((a, b) => {
-            if (a.date < b.date) {
-                return 1;
-            } else {
-                return -1;
-            }
-        });
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      return [];
     }
+  }
 
-    async getPost(slug: string) {
-        const contentDirectory = path.join(process.cwd(), "src/content/blog");
-        const fullPath = path.join(contentDirectory, `${slug}.md`);
+  async getPost(slug: string) {
+    try {
+      const response = (await strapiClient.collection('articles').find({
+        filters: {
+          slug: {
+            $eq: slug,
+          },
+        },
+      })) as unknown as Response<PostType[]>;
 
-        try {
-            const fileContents = await readFile(fullPath, "utf8");
-            const { data, content } = matter(fileContents);
-
-            return {
-                frontmatter: data as BlogPost["frontmatter"],
-                content,
-            };
-        } catch {
-            return null;
-        }
+      return response.data[0];
+    } catch {
+      return null;
     }
+  }
 }
 
-export const post = new Post()
+export const post = new Post();

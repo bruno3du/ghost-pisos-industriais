@@ -1,9 +1,9 @@
-import { post } from "@/provider/post";
-import Image from "next/image";
-import Link from "next/link";
+import { post } from '@/provider/post';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default async function BlogPage() {
-  const posts =  post.getPosts();
+  const posts = await post.getPosts();
 
   return (
     <main className="flex min-h-screen flex-col items-center py-24">
@@ -18,20 +18,20 @@ export default async function BlogPage() {
             >
               <div className="relative h-48 w-full">
                 <Image
-                  src={post.coverImage || "/images/blog/default.jpg"}
+                  src={post.cover || '/images/blog/default.jpg'}
                   alt={post.title}
                   fill
-                  style={{ objectFit: "cover" }}
+                  style={{ objectFit: 'cover' }}
                 />
               </div>
               <div className="p-6">
                 <p className="text-sm text-gray-500 mb-2">
-                  {new Date(post.date).toLocaleString("pt-BR", {
-                    dateStyle: "short",
+                  {new Date(post.publishedAt).toLocaleString('pt-BR', {
+                    dateStyle: 'short',
                   })}
                 </p>
                 <h3 className="text-xl font-bold mb-2">{post.title}</h3>
-                <p className="text-gray-600 mb-4">{post.excerpt}</p>
+                <p className="text-gray-600 mb-4">{post.description}</p>
                 <Link
                   href={`/blog/${post.slug}`}
                   className="text-blue-600 font-medium hover:underline"

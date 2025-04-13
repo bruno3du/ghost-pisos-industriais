@@ -1,8 +1,8 @@
 ---
-title: "Piso Epóxi vs. Concreto Polido: Qual é o Certo para sua Instalação?"
-date: "2025-03-05"
-excerpt: "Uma comparação de duas opções populares de pisos industriais para ajudá-lo a fazer a melhor escolha para suas necessidades específicas."
-coverImage: "/images/blog/comparison.jpg"
+title: 'Piso Epóxi vs. Concreto Polido: Qual é o Certo para sua Instalação?'
+date: '2025-03-05'
+excerpt: 'Uma comparação de duas opções populares de pisos industriais para ajudá-lo a fazer a melhor escolha para suas necessidades específicas.'
+coverImage: '/images/blog/comparison.jpg'
 ---
 
 Quando se trata de pisos industriais, duas opções frequentemente se destacam: piso epóxi e concreto polido. Ambos têm suas vantagens, mas a escolha certa depende dos requisitos específicos da sua instalação.

@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import logo from "@/assets/images/logo-black.png";
-import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
+import logo from '@/assets/images/logo-black.png';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useState } from 'react';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -22,28 +22,16 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            <Link
-              href="/"
-              className="text-gray-700 hover:text-blue-600 font-medium"
-            >
+            <Link href="/" className="text-gray-700 hover:text-blue-600 font-medium">
               Início
             </Link>
-            <Link
-              href="/services"
-              className="text-gray-700 hover:text-blue-600 font-medium"
-            >
+            <Link href="/services" className="text-gray-700 hover:text-blue-600 font-medium">
               Serviços
             </Link>
-            <Link
-              href="/blog"
-              className="text-gray-700 hover:text-blue-600 font-medium"
-            >
+            <Link href="/blog" className="text-gray-700 hover:text-blue-600 font-medium">
               Blog
             </Link>
-            <Link
-              href="/contact"
-              className="text-gray-700 hover:text-blue-600 font-medium"
-            >
+            <Link href="/contact" className="text-gray-700 hover:text-blue-600 font-medium">
               Contato
             </Link>
           </nav>
@@ -56,12 +44,7 @@ export default function Header() {
           >
             <span className="sr-only">Abrir menu</span>
             {mobileMenuOpen ? (
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -70,12 +53,7 @@ export default function Header() {
                 />
               </svg>
             ) : (
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"

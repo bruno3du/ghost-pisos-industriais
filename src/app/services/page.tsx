@@ -1,56 +1,56 @@
-import { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
+import { Metadata } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: "Nossos Serviços | Ghost Pisos Industriais",
+  title: 'Nossos Serviços | Ghost Pisos Industriais',
   description:
-    "Serviços abrangentes de piso industrial incluindo piso epóxi, concreto polido, reparos de piso, revestimentos e marcações.",
+    'Serviços abrangentes de piso industrial incluindo concreto polido, reparos de piso, revestimentos e marcações.',
 };
 
 export default function ServicesPage() {
   const services = [
     {
-      id: "epoxy-flooring",
-      title: "Piso Epóxi",
+      id: 'epoxy-flooring',
+      title: 'Piso Epóxi',
       description:
-        "Nossos sistemas de piso epóxi proporcionam durabilidade excepcional, resistência química e recursos de segurança para ambientes industriais. De revestimentos epóxi básicos a sistemas decorativos de alto desempenho, oferecemos soluções personalizadas para as necessidades específicas da sua instalação.",
+        'Nossos sistemas de piso epóxi proporcionam durabilidade excepcional, resistência química e recursos de segurança para ambientes industriais. De revestimentos epóxi básicos a sistemas decorativos de alto desempenho, oferecemos soluções personalizadas para as necessidades específicas da sua instalação.',
       features: [
-        "Resistente a produtos químicos e manchas",
-        "Superfície sem emendas e fácil de limpar",
-        "Cores e acabamentos personalizados",
-        "Opções antiderrapantes disponíveis",
-        "Suporta tráfego pesado e equipamentos",
+        'Resistente a produtos químicos e manchas',
+        'Superfície sem emendas e fácil de limpar',
+        'Cores e acabamentos personalizados',
+        'Opções antiderrapantes disponíveis',
+        'Suporta tráfego pesado e equipamentos',
       ],
-      image: "/images/services/epoxy-flooring.jpg",
+      image: '/images/services/epoxy-flooring.jpg',
     },
     {
-      id: "polished-concrete",
-      title: "Concreto Polido",
+      id: 'polished-concrete',
+      title: 'Concreto Polido',
       description:
-        "Os pisos de concreto polido combinam beleza com funcionalidade, oferecendo uma solução de piso sustentável e de baixa manutenção com excelente durabilidade. Nosso processo mecânico de lixamento e polimento transforma o concreto comum em uma superfície lisa e reflexiva.",
+        'Os pisos de concreto polido combinam beleza com funcionalidade, oferecendo uma solução de piso sustentável e de baixa manutenção com excelente durabilidade. Nosso processo mecânico de lixamento e polimento transforma o concreto comum em uma superfície lisa e reflexiva.',
       features: [
-        "Ecologicamente amigável",
-        "Custos reduzidos de manutenção",
-        "Maior reflexividade de luz",
-        "Resistência aprimorada a escorregões",
-        "Durabilidade a longo prazo",
+        'Ecologicamente amigável',
+        'Custos reduzidos de manutenção',
+        'Maior reflexividade de luz',
+        'Resistência aprimorada a escorregões',
+        'Durabilidade a longo prazo',
       ],
-      image: "/images/services/polished-concrete.webp",
+      image: '/images/services/polished-concrete.webp',
     },
     {
-      id: "floor-repairs",
-      title: "Reparos de Piso",
+      id: 'floor-repairs',
+      title: 'Reparos de Piso',
       description:
-        "Nossos serviços de reparo de piso abordam rachaduras, descascamentos, juntas e outros danos para restaurar seu piso industrial à condição ideal. De pequenos reparos a grandes reabilitações, usamos técnicas e materiais líderes do setor.",
+        'Nossos serviços de reparo de piso abordam rachaduras, descascamentos, juntas e outros danos para restaurar seu piso industrial à condição ideal. De pequenos reparos a grandes reabilitações, usamos técnicas e materiais líderes do setor.',
       features: [
-        "Reparo de rachaduras e juntas",
-        "Preparação de superfície",
-        "Recuperação de concreto",
-        "Eliminação de riscos de tropeços",
-        "Tempo rápido de execução",
+        'Reparo de rachaduras e juntas',
+        'Preparação de superfície',
+        'Recuperação de concreto',
+        'Eliminação de riscos de tropeços',
+        'Tempo rápido de execução',
       ],
-      image: "/images/services/floor-repairs.webp",
+      image: '/images/services/floor-repairs.webp',
     },
   ];
 
@@ -59,8 +59,8 @@ export default function ServicesPage() {
       <div className="container mx-auto px-4 max-w-6xl">
         <h1 className="text-4xl font-bold mb-6 text-center">Nossos Serviços</h1>
         <p className="text-xl text-gray-600 mb-12 text-center max-w-3xl mx-auto">
-          Fornecemos soluções abrangentes de piso para instalações industriais,
-          oferecendo expertise em instalação, manutenção e reparo.
+          Fornecemos soluções abrangentes de piso para instalações industriais, oferecendo expertise
+          em instalação, manutenção e reparo.
         </p>
 
         <div className="space-y-20">
@@ -69,7 +69,7 @@ export default function ServicesPage() {
               key={service.id}
               id={service.id}
               className={`flex flex-col  ${
-                index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
               } gap-8 md:gap-12`}
             >
               <div className="md:w-1/2">
@@ -78,7 +78,7 @@ export default function ServicesPage() {
                     src={service.image}
                     alt={service.title}
                     fill
-                    style={{ objectFit: "cover" }}
+                    style={{ objectFit: 'cover' }}
                   />
                 </div>
               </div>

@@ -1,72 +1,72 @@
-import { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
+import { Metadata } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: "Portfólio | Ghost Pisos Industriais",
+  title: 'Portfólio | Ghost Pisos Industriais',
   description:
-    "Veja nosso portfólio de projetos de pisos industriais concluídos, incluindo pisos epóxi, concreto polido e reparos de piso.",
+    'Veja nosso portfólio de projetos de pisos industriais concluídos, incluindo pisos epóxi, concreto polido e reparos de piso.',
 };
 const projects = [
   {
-    id: "manufacturing-facility-epoxy",
-    title: "Piso Epóxi para Instalação Industrial",
-    category: "Piso Epóxi",
+    id: 'manufacturing-facility-epoxy',
+    title: 'Piso Epóxi para Instalação Industrial',
+    category: 'Piso Epóxi',
     description:
-      "Instalação de um sistema de piso epóxi resistente a produtos químicos para uma instalação de fabricação de 4.645 m².",
-    location: "Campinas, SP",
+      'Instalação de um sistema de piso epóxi resistente a produtos químicos para uma instalação de fabricação de 4.645 m².',
+    location: 'Campinas, SP',
     year: 2024,
-    image: "/images/portfolio/manufacturing-epoxy.jpg",
+    image: '/images/portfolio/manufacturing-epoxy.jpg',
   },
   {
-    id: "warehouse-polished-concrete",
-    title: "Concreto Polido para Centro de Distribuição",
-    category: "Concreto Polido",
+    id: 'warehouse-polished-concrete',
+    title: 'Concreto Polido para Centro de Distribuição',
+    category: 'Concreto Polido',
     description:
-      "Piso de concreto polido para um centro de distribuição de 9.290 m² com tráfego intenso de empilhadeiras.",
-    location: "São Paulo, SP",
+      'Piso de concreto polido para um centro de distribuição de 9.290 m² com tráfego intenso de empilhadeiras.',
+    location: 'São Paulo, SP',
     year: 2023,
-    image: "/images/portfolio/warehouse-concrete.jpg",
+    image: '/images/portfolio/warehouse-concrete.jpg',
   },
   {
-    id: "food-production-facility",
-    title: "Instalação de Produção de Alimentos",
-    category: "Piso Epóxi",
+    id: 'food-production-facility',
+    title: 'Instalação de Produção de Alimentos',
+    category: 'Piso Epóxi',
     description:
-      "Sistema de piso epóxi compatível com normas sanitárias para uma instalação de produção de alimentos com propriedades antimicrobianas.",
-    location: "Curitiba, PR",
+      'Sistema de piso epóxi compatível com normas sanitárias para uma instalação de produção de alimentos com propriedades antimicrobianas.',
+    location: 'Curitiba, PR',
     year: 2023,
-    image: "/images/portfolio/food-production.jpg",
+    image: '/images/portfolio/food-production.jpg',
   },
   {
-    id: "automotive-plant-floor-repair",
-    title: "Reparo de Piso de Fábrica Automotiva",
-    category: "Reparos de Piso",
+    id: 'automotive-plant-floor-repair',
+    title: 'Reparo de Piso de Fábrica Automotiva',
+    category: 'Reparos de Piso',
     description:
-      "Reparo extensivo de concreto e preenchimento de juntas para uma fábrica de manufatura automotiva.",
-    location: "Betim, MG",
+      'Reparo extensivo de concreto e preenchimento de juntas para uma fábrica de manufatura automotiva.',
+    location: 'Betim, MG',
     year: 2022,
-    image: "/images/portfolio/automotive-repair.jpg",
+    image: '/images/portfolio/automotive-repair.jpg',
   },
   {
-    id: "pharmaceutical-facility",
-    title: "Piso para Instalação Farmacêutica",
-    category: "Piso Epóxi",
+    id: 'pharmaceutical-facility',
+    title: 'Piso para Instalação Farmacêutica',
+    category: 'Piso Epóxi',
     description:
-      "Instalação de um sistema de piso epóxi para sala limpa para uma instalação de fabricação farmacêutica.",
-    location: "Rio de Janeiro, RJ",
+      'Instalação de um sistema de piso epóxi para sala limpa para uma instalação de fabricação farmacêutica.',
+    location: 'Rio de Janeiro, RJ',
     year: 2022,
-    image: "/images/portfolio/pharmaceutical.jpg",
+    image: '/images/portfolio/pharmaceutical.jpg',
   },
   {
-    id: "logistics-hub-floor-markings",
-    title: "Marcações de Piso para Centro Logístico",
-    category: "Marcações de Piso",
+    id: 'logistics-hub-floor-markings',
+    title: 'Marcações de Piso para Centro Logístico',
+    category: 'Marcações de Piso',
     description:
-      "Sistema abrangente de marcação de piso para um centro logístico de 6.968 m² para melhorar a segurança e a eficiência.",
-    location: "Joinville, SC",
+      'Sistema abrangente de marcação de piso para um centro logístico de 6.968 m² para melhorar a segurança e a eficiência.',
+    location: 'Joinville, SC',
     year: 2021,
-    image: "/images/portfolio/logistics-markings.jpg",
+    image: '/images/portfolio/logistics-markings.jpg',
   },
 ];
 
@@ -76,12 +76,12 @@ export default function PortfolioPage() {
       <div className="container mx-auto px-4 max-w-6xl">
         <h1 className="text-4xl font-bold mb-6 text-center">Nosso Portfólio</h1>
         <p className="text-xl text-gray-600 mb-12 text-center max-w-3xl mx-auto">
-          Veja nossos projetos de piso industrial concluídos para conhecer
-          exemplos do nosso trabalho em várias indústrias e aplicações.
+          Veja nossos projetos de piso industrial concluídos para conhecer exemplos do nosso
+          trabalho em várias indústrias e aplicações.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
+          {projects.map(project => (
             <div
               key={project.id}
               className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition"
@@ -91,7 +91,7 @@ export default function PortfolioPage() {
                   src={project.image}
                   alt={project.title}
                   fill
-                  style={{ objectFit: "cover" }}
+                  style={{ objectFit: 'cover' }}
                 />
               </div>
               <div className="p-6">
@@ -110,9 +110,7 @@ export default function PortfolioPage() {
         </div>
 
         <div className="mt-16 text-center">
-          <h2 className="text-2xl font-bold mb-6">
-            Pronto para transformar seu piso industrial?
-          </h2>
+          <h2 className="text-2xl font-bold mb-6">Pronto para transformar seu piso industrial?</h2>
           <Link
             href="/contact"
             className="px-6 py-3 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition"

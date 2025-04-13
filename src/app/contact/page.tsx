@@ -1,56 +1,51 @@
-import { SendEmailContactInput } from "@/provider/email/email.dto";
-import { Metadata } from "next";
-import { sendEmail } from "./action/send-email";
-import SubmitButton from "./components/submit-button";
+import { SendEmailContactInput } from '@/provider/email/email.dto';
+import { Metadata } from 'next';
+import { sendEmail } from './action/send-email';
+import SubmitButton from './components/submit-button';
 
 export const metadata: Metadata = {
-  title: "Contato | Ghost Pisos Industriais",
+  title: 'Contato | Ghost Pisos Industriais',
   description:
-    "Entre em contato com nossos especialistas em piso industrial para uma consulta gratuita e orçamento.",
+    'Entre em contato com nossos especialistas em piso industrial para uma consulta gratuita e orçamento.',
 };
 
 const data = [
   {
-    title: "Horário",
-    description:
-      "Segunda - Sexta: 8h - 17h\nSábado: 9h - 14h\nDomingo: Fechado",
+    title: 'Horário',
+    description: 'Segunda - Sexta: 8h - 17h\nSábado: 9h - 14h\nDomingo: Fechado',
   },
   {
-    title: "Telefone",
-    description: "(19) 98325-6973",
+    title: 'Telefone',
+    description: '(19) 98325-6973',
   },
   {
-    title: "Email",
-    description: "contato@ghostpisosindustriais.com",
+    title: 'Email',
+    description: 'contato@ghostpisosindustriais.com',
   },
   {
-    title: "Endereço",
-    description:
-      "Rua Industrial, 123\nDistrito Industrial\nCampinas, SP 13087-450",
+    title: 'Endereço',
+    description: 'Rua Industrial, 123\nDistrito Industrial\nCampinas, SP 13087-450',
   },
 ];
 
 export default function ContactPage() {
-
   const handleSendContact = async (form: FormData) => {
-    "use server"
-    const mail = Object.fromEntries(form) 
-    await sendEmail(mail as unknown as SendEmailContactInput)
-  }
+    'use server';
+    const mail = Object.fromEntries(form);
+    await sendEmail(mail as unknown as SendEmailContactInput);
+  };
   return (
     <main className="flex min-h-screen flex-col items-center py-24">
       <div className="container mx-auto px-4 max-w-6xl">
-        <h1 className="text-4xl font-bold mb-12 text-center">
-          Entre em Contato
-        </h1>
+        <h1 className="text-4xl font-bold mb-12 text-center">Entre em Contato</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Contact Information */}
           <div>
             <h2 className="text-2xl font-bold mb-6">Fale Conosco</h2>
             <p className="text-gray-600 mb-8 text-pretty">
-              Tem perguntas sobre nossas soluções de piso industrial? Entre em
-              contato hoje para uma consulta gratuita e orçamento.
+              Tem perguntas sobre nossas soluções de piso industrial? Entre em contato hoje para uma
+              consulta gratuita e orçamento.
             </p>
 
             <div className="space-y-6">
@@ -100,16 +95,12 @@ export default function ContactPage() {
                     type="text"
                     id="lastName"
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    
                   />
                 </div>
               </div>
 
               <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                   Endereço de Email *
                 </label>
                 <input
@@ -122,10 +113,7 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <label
-                  htmlFor="phone"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
+                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
                   Número de Telefone
                 </label>
                 <input
@@ -137,10 +125,7 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <label
-                  htmlFor="company"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
+                <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">
                   Nome da Empresa
                 </label>
                 <input
@@ -152,10 +137,7 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
                   Mensagem *
                 </label>
                 <textarea

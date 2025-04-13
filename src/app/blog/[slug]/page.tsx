@@ -1,84 +1,33 @@
-import { PageProps } from "@/app/@types";
-import { post as postApi } from "@/provider/post";
-import { MDXProvider } from "@mdx-js/react";
-import { Metadata } from "next";
-import { MDXRemote } from "next-mdx-remote/rsc";
-import Image from "next/image";
-import { notFound } from "next/navigation";
-import { readdir } from "node:fs/promises";
-import path from "node:path";
-
-
-type MdxComponents = React.ComponentProps<typeof MDXProvider>["components"];
-
-const mdxComponents: MdxComponents = {
-  // ...
-  Image,
-  h1: (props) => <h1 className="text-4xl font-bold mb-6 mt-3" {...props} />,
-  h2: (props) => <h2 className="text-3xl font-bold mb-4 mt-3" {...props} />,
-  h3: (props) => <h3 className="text-2xl font-bold mb-3 mt-2" {...props} />,
-  h4: (props) => <h4 className="text-xl font-bold mb-2 mt-2" {...props} />,
-  h5: (props) => <h5 className="text-lg font-bold mb-2 mt-2" {...props} />,
-  h6: (props) => <h6 className="text-base font-bold mb-2 mt-1" {...props} />,
-  p: (props) => <p className="mb-4" {...props} />,
-  ul: (props) => <ul className="list-disc list-inside mb-4" {...props} />,
-  ol: (props) => <ol className="list-decimal list-inside mb-4" {...props} />,
-  li: (props) => <li className="mb-2" {...props} />,
-  blockquote: (props) => (
-    <blockquote className="border-l-4 border-gray-300 pl-4 mb-4" {...props} />
-  ),
-  code: (props) => (
-    <code className="bg-gray-100 text-sm p-1 rounded-md" {...props} />
-  ),
-  inlineCode: (props) => (
-    <code className="bg-gray-100 text-sm p-1 rounded-md" {...props} />
-  ),
-  pre: (props) => (
-    <pre className="bg-gray-100 p-4 rounded-md mb-4" {...props} />
-  ),
-  table: (props) => (
-    <table
-      className="w-full border-collapse border border-gray-300 mb-4"
-      {...props}
-    />
-  ),
-  th: (props) => (
-    <th
-      className="border border-gray-300 bg-gray-100 font-bold p-2"
-      {...props}
-    />
-  ),
-  td: (props) => <td className="border border-gray-300 p-2" {...props} />,
-  a: (props) => <a className="text-blue-600 hover:underline" {...props} />,
-  hr: (props) => <hr className="border-gray-300 my-6" {...props} />,
-};
-
-
+import { PageProps } from '@/app/@types';
+import { post as postApi } from '@/provider/post';
+import { Metadata } from 'next';
+import Image from 'next/image';
+import { notFound } from 'next/navigation';
+import { readdir } from 'node:fs/promises';
+import path from 'node:path';
+import { Content } from '../../../utils/content';
 
 // Função para gerar metadados dinâmicos para SEO
-export async function generateMetadata({
-  params,
-}: PageProps<{ slug: string }>): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps<{ slug: string }>): Promise<Metadata> {
   const post = await postApi.getPost((await params).slug);
 
   if (!post) {
     return {
-      title: "Post não encontrado",
+      title: 'Post não encontrado',
     };
   }
 
   return {
-    title: post.frontmatter.title,
-    description:
-      post.frontmatter.description || `${post.frontmatter.title} - Blog`,
-    openGraph: post.frontmatter.coverImage
+    title: post.title,
+    description: post.description || `${post.title} - Blog`,
+    openGraph: post.cover
       ? {
           images: [
             {
-              url: post.frontmatter.coverImage,
+              url: post.cover,
               width: 1200,
               height: 630,
-              alt: post.frontmatter.title,
+              alt: post.title,
             },
           ],
         }
@@ -88,47 +37,46 @@ export async function generateMetadata({
 
 // Função para gerar todos os slugs de posts para geração estática
 export async function generateStaticParams() {
-  const contentDirectory = path.join(process.cwd(), "src/content/blog");
+  const contentDirectory = path.join(process.cwd(), 'src/content/blog');
 
   try {
     const fileNames = await readdir(contentDirectory);
 
     return fileNames
-      .filter((fileName) => fileName.endsWith(".md"))
-      .map((fileName) => ({
-        slug: fileName.replace(/\.md$/, ""),
+      .filter(fileName => fileName.endsWith('.md'))
+      .map(fileName => ({
+        slug: fileName.replace(/\.md$/, ''),
       }));
   } catch (error) {
-    console.error("Erro ao ler diretório de blog:", error);
+    console.error('Erro ao ler diretório de blog:', error);
     return [];
   }
 }
 
-export default async function BlogPostPage({
-  params,
-}: PageProps<{ slug: string }>) {
-  const post = await postApi.getPost((await params).slug);
+export default async function BlogPost({ params }: { params: { slug: string } }) {
+  const { slug } = params;
+  const article = await postApi.getPost(slug);
 
-  if (!post) {
+  if (!article) {
     notFound();
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center py-24">
+    <main className="container mx-auto py-10 px-4">
       <article className="container mx-auto px-4 max-w-4xl">
         <div className="mb-12">
           <p className="text-gray-500 mb-2">
-            {new Date(post.frontmatter.date).toLocaleString("pt-BR", {
-              dateStyle: "short",
+            {new Date(article.createdAt).toLocaleString('pt-BR', {
+              dateStyle: 'short',
             })}
           </p>
-          <h1 className="text-4xl font-bold mb-6">{post.frontmatter.title}</h1>
+          <h1 className="text-4xl font-bold mb-6">{article.title}</h1>
 
-          {post.frontmatter.coverImage && (
+          {article.cover && (
             <div className="relative h-[400px] w-full rounded-xl overflow-hidden mb-8">
               <Image
-                src={post.frontmatter.coverImage}
-                alt={post.frontmatter.title}
+                src={article.cover}
+                alt={article.title}
                 fill
                 priority
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -139,7 +87,7 @@ export default async function BlogPostPage({
         </div>
 
         <div className="prose prose-lg max-w-none">
-          <MDXRemote source={post.content} components={mdxComponents} />
+          <Content content={article.content ?? []} />
         </div>
       </article>
     </main>

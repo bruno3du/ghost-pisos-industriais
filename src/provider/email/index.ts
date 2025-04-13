@@ -3,28 +3,28 @@ import { contactTemplate } from './templates/contact';
 import { transporter } from './transporter';
 
 class Email {
-    sendEmailContact = async ({
+  sendEmailContact = async ({
+    company,
+    email,
+    firstName,
+    lastName,
+    message,
+    phone,
+  }: SendEmailContactInput) => {
+    return await transporter.sendMail({
+      from: '"Ghost Pisos Industriais" <contato@ghostpisosindustriais.com>',
+      to: 'contato@ghostpisosindustriais.com',
+      subject: 'Contato website',
+      html: contactTemplate({
         company,
         email,
         firstName,
         lastName,
         message,
-        phone
-    }: SendEmailContactInput) => {
-        return await transporter.sendMail({
-            from: '"Ghost Pisos Industriais" <contato@ghostpisosindustriais.com>',
-            to: 'contato@ghostpisosindustriais.com',
-            subject: 'Contato website',
-            html: contactTemplate({
-                company,
-                email,
-                firstName,
-                lastName,
-                message,
-                phone
-            })
-        });
-    }
+        phone,
+      }),
+    });
+  };
 }
 
 export const email = new Email();
