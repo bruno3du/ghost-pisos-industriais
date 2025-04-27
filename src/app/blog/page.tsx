@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 export default async function BlogPage() {
   const posts = await post.getPosts();
+  const imageUrl = process.env.NEXT_PUBLIC_STRAPI_URL ?? '';
 
   return (
     <main className="flex min-h-screen flex-col items-center py-24">
@@ -18,7 +19,11 @@ export default async function BlogPage() {
             >
               <div className="relative h-48 w-full">
                 <Image
-                  src={post.cover || '/images/blog/default.jpg'}
+                  src={
+                    post.cover
+                      ? imageUrl + post.cover?.formats.large.url
+                      : '/images/blog/default.jpg'
+                  }
                   alt={post.title}
                   fill
                   style={{ objectFit: 'cover' }}

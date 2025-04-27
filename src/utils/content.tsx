@@ -18,8 +18,6 @@ export const Content = ({ content }: { content: BlocksContent }) => {
         ),
         // ...or point to a design system
         heading: ({ children, level }) => {
-          console.log('🚀 ~ Content ~ level:', level);
-
           switch (level) {
             case 1:
               return <h1 className="text-4xl font-bold mb-6 mt-3">{children}</h1>;

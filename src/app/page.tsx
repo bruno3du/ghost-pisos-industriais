@@ -25,32 +25,10 @@ const services = [
   },
 ];
 
-// const posts = [
-//   {
-//     title: "Bem-vindo ao Nosso Blog de Pisos Industriais",
-//     excerpt:
-//       "Conheça as últimas tendências em pisos industriais e como nossos serviços podem ajudar seu negócio.",
-//     date: "4 de Março, 2025",
-//     image: "/images/blog/welcome.jpg",
-//     slug: "welcome-post",
-//   },
-//   {
-//     title:
-//       "Piso Epóxi vs. Concreto Polido: Qual é o Certo para sua Instalação?",
-//     excerpt:
-//       "Uma comparação de duas opções populares de pisos industriais para ajudá-lo a fazer a melhor escolha para suas necessidades específicas.",
-//     date: "5 de Março, 2025",
-//     image: "/images/blog/comparison.jpg",
-//     slug: "epoxy-vs-concrete",
-//   },
-// ];
-
 export default async function Home() {
   const posts = await post.getPosts();
   return (
     <main className="flex min-h-screen flex-col items-center">
-      {/* Hero Section */}
-
       <Hero />
       {/* Services Section */}
       <section className="w-full py-16 bg-white">
@@ -84,54 +62,6 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      {/* <section className="w-full py-16 bg-gray-50">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            O Que Nossos Clientes Dizem
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                quote:
-                  "A qualidade do trabalho superou nossas expectativas. O piso do nosso armazém nunca esteve melhor.",
-                author: "João Silva",
-                company: "ABC Manufatura",
-              },
-              {
-                quote:
-                  "Equipe profissional, excelente comunicação e resultados extraordinários. Altamente recomendado.",
-                author: "Maria Rodriguez",
-                company: "XYZ Logística",
-              },
-              {
-                quote:
-                  "Concluído dentro do prazo e do orçamento. O piso epóxi transformou nossa área de produção.",
-                author: "David Santos",
-                company: "Engenharia de Precisão Ltda",
-              },
-            ].map((testimonial, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow">
-                <div className="flex mb-4">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <span key={star} className="text-yellow-500">
-                      ★
-                    </span>
-                  ))}
-                </div>
-                <p className="text-gray-700 mb-4 italic">
-                  &quot;{testimonial.quote}&quot;
-                </p>
-                <div>
-                  <p className="font-bold">{testimonial.author}</p>
-                  <p className="text-gray-600 text-sm">{testimonial.company}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
-
       {/* Recent Blog Posts */}
       <section className="w-full py-16 bg-white">
         <div className="container mx-auto px-4 max-w-6xl">
@@ -143,12 +73,13 @@ export default async function Home() {
                 className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition"
               >
                 <div className="relative h-48 w-full">
-                  {/* <Image
-                    src={post.coverImage}
-                    alt={post.title}
+                  <Image
+                    src={(process.env.NEXT_PUBLIC_STRAPI_URL ?? '') + post.cover?.formats.large.url}
+                    alt={post.cover?.alternativeText || ''}
+                    title={post.title}
                     fill
-                    style={{ objectFit: 'cover' }}
-                  /> */}
+                    className="object-cover"
+                  />
                 </div>
                 <div className="p-6">
                   <p className="text-sm text-gray-500 mb-2">

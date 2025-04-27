@@ -3,8 +3,6 @@ import { post as postApi } from '@/provider/post';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { readdir } from 'node:fs/promises';
-import path from 'node:path';
 import { Content } from '../../../utils/content';
 
 // Função para gerar metadados dinâmicos para SEO
@@ -24,7 +22,7 @@ export async function generateMetadata({ params }: PageProps<{ slug: string }>):
       ? {
           images: [
             {
-              url: post.cover,
+              url: process.env.NEXT_PUBLIC_STRAPI_URL + post.cover.formats.small.url,
               width: 1200,
               height: 630,
               alt: post.title,
@@ -37,24 +35,20 @@ export async function generateMetadata({ params }: PageProps<{ slug: string }>):
 
 // Função para gerar todos os slugs de posts para geração estática
 export async function generateStaticParams() {
-  const contentDirectory = path.join(process.cwd(), 'src/content/blog');
+  const posts = await postApi.getPosts();
 
   try {
-    const fileNames = await readdir(contentDirectory);
-
-    return fileNames
-      .filter(fileName => fileName.endsWith('.md'))
-      .map(fileName => ({
-        slug: fileName.replace(/\.md$/, ''),
-      }));
+    return posts.map(post => ({
+      slug: post.slug,
+    }));
   } catch (error) {
-    console.error('Erro ao ler diretório de blog:', error);
+    console.error('Erro ao gerar parâmetros estáticos:', error);
     return [];
   }
 }
 
-export default async function BlogPost({ params }: { params: { slug: string } }) {
-  const { slug } = params;
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const article = await postApi.getPost(slug);
 
   if (!article) {
@@ -75,7 +69,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           {article.cover && (
             <div className="relative h-[400px] w-full rounded-xl overflow-hidden mb-8">
               <Image
-                src={article.cover}
+                src={process.env.NEXT_PUBLIC_STRAPI_URL + article.cover.formats.large.url}
                 alt={article.title}
                 fill
                 priority
