@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export const Hero = () => {
+  
   return (
     <section className="w-full py-30 bg-gradient-to-r min-h-[60vh] from-gray-800 to-gray-900/20 text-white relative">
       <div className="container mx-auto px-4 max-w-6xl">
