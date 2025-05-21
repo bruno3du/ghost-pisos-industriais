@@ -40,8 +40,8 @@ export default buildConfig({
       host: 'smtp.hostinger.com',
       port: 465,
       auth: {
-        user: process.env.emailAddress,
-        pass: process.env.emailPassword,
+        user: process.env.EMAIL_ADDRESS,
+        pass: process.env.EMAIL_PASSWORD,
       },
     },
   }),
