@@ -1,13 +1,17 @@
-import { PageProps } from '@/app/@types';
-import { post as postApi } from '@/provider/post';
+import { PageProps } from '@/app/(frontend)/@types';
+import { Media } from '@/payload-types';
+import { PayloadServer } from '@/provider/payload';
+import { PostProvider } from '@/provider/post';
+import { Content } from '@/utils/content';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { Content } from '../../../utils/content';
 
 // Função para gerar metadados dinâmicos para SEO
 export async function generateMetadata({ params }: PageProps<{ slug: string }>): Promise<Metadata> {
-  const post = await postApi.getPost((await params).slug);
+  const post = await new PostProvider(await new PayloadServer().execute()).getBySlug(
+    (await params).slug
+  );
 
   if (!post) {
     return {
@@ -18,11 +22,11 @@ export async function generateMetadata({ params }: PageProps<{ slug: string }>):
   return {
     title: post.title,
     description: post.description || `${post.title} - Blog`,
-    openGraph: post.cover
+    openGraph: (post.cover as Media)?.url
       ? {
           images: [
             {
-              url: process.env.NEXT_PUBLIC_STRAPI_URL + post.cover.formats.small.url,
+              url: (post.cover as Media).url as string,
               width: 1200,
               height: 630,
               alt: post.title,
@@ -35,10 +39,10 @@ export async function generateMetadata({ params }: PageProps<{ slug: string }>):
 
 // Função para gerar todos os slugs de posts para geração estática
 export async function generateStaticParams() {
-  const posts = await postApi.getPosts();
+  const posts = await new PostProvider(await new PayloadServer().execute()).getAll();
 
   try {
-    return posts.map(post => ({
+    return posts.docs.map(post => ({
       slug: post.slug,
     }));
   } catch (error) {
@@ -49,7 +53,7 @@ export async function generateStaticParams() {
 
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const article = await postApi.getPost(slug);
+  const article = await new PostProvider(await new PayloadServer().execute()).getBySlug(slug);
 
   if (!article) {
     notFound();
@@ -66,10 +70,10 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           </p>
           <h1 className="text-4xl font-bold mb-6">{article.title}</h1>
 
-          {article.cover && (
+          {(article.cover as Media)?.url && (
             <div className="relative h-[400px] w-full rounded-xl overflow-hidden mb-8">
               <Image
-                src={process.env.NEXT_PUBLIC_STRAPI_URL + article.cover.formats.large.url}
+                src={(article.cover as Media).url as string}
                 alt={article.title}
                 fill
                 priority
@@ -81,7 +85,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         </div>
 
         <div className="prose prose-lg max-w-none">
-          <Content content={article.content ?? []} />
+          <Content data={article.content} />
         </div>
       </article>
     </main>

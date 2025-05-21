@@ -1,5 +1,7 @@
-import { Hero } from '@/page/home/hero';
-import { post } from '@/provider/post';
+import { Hero } from '@/components/page/home/hero';
+import { Media } from '@/payload-types';
+import { PayloadServer } from '@/provider/payload';
+import { PostProvider } from '@/provider/post';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -26,10 +28,12 @@ const services = [
 ];
 
 export default async function Home() {
-  const posts = await post.getPosts();
+  const posts = await new PostProvider(await new PayloadServer().execute()).getAll();
+
   return (
     <main className="flex min-h-screen flex-col items-center">
       <Hero />
+      {/* TODO: Add posts */}
       {/* Services Section */}
       <section className="w-full py-16 bg-white">
         <div className="container mx-auto px-4 max-w-6xl">
@@ -67,19 +71,21 @@ export default async function Home() {
         <div className="container mx-auto px-4 max-w-6xl">
           <h2 className="text-3xl font-bold text-center mb-12">Últimas do Nosso Blog</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {posts.map((post, index) => (
+            {posts.docs.map((post, index) => (
               <div
                 key={index}
                 className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition"
               >
                 <div className="relative h-48 w-full">
-                  <Image
-                    src={(process.env.NEXT_PUBLIC_STRAPI_URL ?? '') + post.cover?.formats.large.url}
-                    alt={post.cover?.alternativeText || ''}
-                    title={post.title}
-                    fill
-                    className="object-cover"
-                  />
+                  {(post.cover as Media).url && (
+                    <Image
+                      src={(post.cover as Media).url as string}
+                      alt={(post.cover as Media).alt}
+                      title={post.title}
+                      fill
+                      className="object-cover"
+                    />
+                  )}
                 </div>
                 <div className="p-6">
                   <p className="text-sm text-gray-500 mb-2">

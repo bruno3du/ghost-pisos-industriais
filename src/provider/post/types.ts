@@ -1,44 +1,10 @@
-import { BlocksContent } from '@strapi/blocks-react-renderer';
+import { Post as PostPayload } from '@/payload-types';
+import { DefaultNodeTypes, TypedEditorState } from '@payloadcms/richtext-lexical';
 
-export interface Cover {
-  id?: number;
-  alternativeText: string;
-  caption: string;
-  width: number;
-  height: number;
-  formats: {
-    large: {
-      url: string;
-      width: number;
-      height: number;
-    };
-    small: {
-      url: string;
-      width: number;
-      height: number;
-    };
-    medium: {
-      url: string;
-      width: number;
-      height: number;
-    };
-    thumbnail: {
-      url: string;
-      width: number;
-      height: number;
-    };
-  };
-}
+export type Post = Omit<PostPayload, 'createdAt' | 'updatedAt' | 'id' | 'content'> & {
+  content: TypedEditorState<DefaultNodeTypes>;
+};
 
-export interface Post {
-  id: number;
-  documentId: string;
-  title: string;
-  description: string;
-  slug: string;
-  createdAt: Date;
-  updatedAt: Date;
-  publishedAt: Date;
-  cover?: Cover;
-  content?: BlocksContent;
-}
+export type CreatePostInput = Post;
+
+export type UpdatePostInput = Post;
