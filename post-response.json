@@ -1,6 +1,6 @@
 {
-  "createdAt": "2025-05-18T20:54:59.618Z",
-  "updatedAt": "2025-05-18T20:54:59.618Z",
+  "createdAt": "2025-05-21T00:50:34.954Z",
+  "updatedAt": "2025-05-21T00:50:34.954Z",
   "title": "7 erros comuns em pisos industriais de concreto e como evitar",
   "description": "Descubra os principais defeitos em pisos industriais de concreto e com",
   "slug": "7-erros-comuns-pisos-industriais-concreto-como-evitar",
@@ -488,7 +488,7 @@
                 "newTab": true,
                 "url": "https://ghostpisosindustriais.com/blog/beneficios-do-piso-de-concreto-industrial"
               },
-              "id": "682a492366d5d882724dcc96"
+              "id": "682d235ae5e462ec88a27017"
             },
             {
               "detail": 0,
@@ -813,7 +813,7 @@
                 "newTab": true,
                 "url": "https://ghostpisosindustriais.com/blog/tecnicas-de-manutencao-para-pisos-industriais"
               },
-              "id": "682a492366d5d882724dcc97"
+              "id": "682d235ae5e462ec88a27018"
             },
             {
               "detail": 0,
@@ -1011,7 +1011,7 @@
                 "newTab": true,
                 "url": "https://ghostpisosindustriais.com/blog/dicas-para-prolongar-a-vida-util-do-piso-industrial"
               },
-              "id": "682a492366d5d882724dcc98"
+              "id": "682d235ae5e462ec88a27019"
             },
             {
               "detail": 0,
@@ -1219,7 +1219,7 @@
                 "newTab": true,
                 "url": "https://ghostpisosindustriais.com/services/construcao-de-pisos-industriais"
               },
-              "id": "682a492366d5d882724dcc99"
+              "id": "682d235ae5e462ec88a2701a"
             },
             {
               "detail": 0,
@@ -1535,6 +1535,21 @@
       "version": 1
     }
   },
+  "cover": {
+    "createdAt": "2025-05-21T00:50:34.835Z",
+    "updatedAt": "2025-05-21T00:50:34.835Z",
+    "alt": "Image",
+    "filename": "image.webp",
+    "mimeType": "image/webp",
+    "filesize": 63958,
+    "width": 1216,
+    "height": 640,
+    "focalX": 50,
+    "focalY": 50,
+    "id": "682d235a528f7462c97d6ca8",
+    "url": "/api/media/file/image.webp",
+    "thumbnailURL": null
+  },
   "_status": "draft",
-  "id": "682a4923a81cfab5a562776f"
+  "id": "682d235a528f7462c97d6caa"
 }

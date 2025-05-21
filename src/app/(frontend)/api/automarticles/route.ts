@@ -6,7 +6,6 @@ import { NextRequest, NextResponse } from 'next/server';
 export const POST = async (request: NextRequest) => {
   try {
     const body = await request.json();
-    console.log('🚀 ~ POST ~ body:', body);
     const response = await new AutomArticles(await new PayloadServer().execute()).execute(
       body as AutomContent
     );

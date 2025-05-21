@@ -77,10 +77,10 @@ export class AutomArticles {
   async createPost(post: AutomPost) {
     try {
       writeFileSync('./post.json', JSON.stringify(post, null, 2));
-      const cover = await this.upload.uploadImageByUrl(post.post.featured_image.url);
+      // const cover = await this.upload.uploadImageByUrl(post.post.featured_image.url);
       const response = await this.posts.create({
         ...(await transformPost(post)),
-        cover: cover.id,
+        // cover: cover.id,
       });
       writeFileSync('./post-response.json', JSON.stringify(response, null, 2));
 
