@@ -7,7 +7,13 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
-// Função para gerar metadados dinâmicos para SEO
+
+export const revalidate = 60
+ 
+
+export const dynamicParams = true 
+ 
+
 export async function generateMetadata({ params }: PageProps<{ slug: string }>): Promise<Metadata> {
   const post = await new PostProvider(await new PayloadServer().execute()).getBySlug(
     (await params).slug
@@ -37,7 +43,6 @@ export async function generateMetadata({ params }: PageProps<{ slug: string }>):
   };
 }
 
-// Função para gerar todos os slugs de posts para geração estática
 export async function generateStaticParams() {
   const posts = await new PostProvider(await new PayloadServer().execute()).getAll();
 

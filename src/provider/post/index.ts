@@ -71,6 +71,9 @@ export class PostProvider {
   async getAll() {
     const response = await this.payload.find({
       collection: 'posts',
+      req: {
+        cache: 'no-store',
+      },
     });
 
     if (!response) {
@@ -88,6 +91,9 @@ export class PostProvider {
           slug: {
             equals: slug,
           },
+        },
+        req: {
+          cache: 'no-store',
         },
       });
 
