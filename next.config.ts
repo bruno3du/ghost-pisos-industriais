@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
           }
         : {
             protocol: 'https',
-            hostname: 'api.ghostpisosindustriais.com',
+            hostname: 'ghostpisosindustriais.com',
             pathname: '/**',
           },
     ],
