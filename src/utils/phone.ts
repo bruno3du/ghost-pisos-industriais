@@ -1,4 +1,5 @@
 export function formatPhoneNumber(number: string): string {
+  if (!number) return '';
   // Remove any non-numeric characters
   const clean = number.replace(/\D/g, '');
 
