@@ -27,14 +27,14 @@ const services = [
   },
 ];
 
+export const revalidate = 60;
+
 export default async function Home() {
   const posts = await new PostProvider(await new PayloadServer().execute()).getAll();
 
   return (
     <main className="flex min-h-screen flex-col items-center">
       <Hero />
-      {/* TODO: Add posts */}
-      {/* Services Section */}
       <section className="w-full py-16 bg-white">
         <div className="container mx-auto px-4 max-w-6xl">
           <h2 className="text-3xl font-bold text-center mb-12">Nossos Serviços</h2>

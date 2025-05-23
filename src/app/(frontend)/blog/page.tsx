@@ -4,6 +4,8 @@ import { PostProvider } from '@/provider/post';
 import Image from 'next/image';
 import Link from 'next/link';
 
+export const revalidate = 60;
+
 export default async function BlogPage() {
   const posts = await new PostProvider(await new PayloadServer().execute()).getAll();
 
