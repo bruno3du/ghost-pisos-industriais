@@ -15,13 +15,13 @@ export const Hero = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
-                href="/contact"
+                href="/contato"
                 className="px-6 py-3 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition"
               >
                 Solicite um Orçamento Grátis
               </Link>
               <Link
-                href="/services"
+                href="/servicos"
                 className="px-6 py-3 bg-transparent border border-white text-white rounded-md font-medium hover:bg-white/10 transition"
               >
                 Nossos Serviços

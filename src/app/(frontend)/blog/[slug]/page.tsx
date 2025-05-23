@@ -1,7 +1,7 @@
 import { PageProps } from '@/app/(frontend)/@types';
 import { Media } from '@/payload-types';
 import { PayloadServer } from '@/provider/payload';
-import { PostProvider } from '@/provider/post';
+import { PostProvider } from '@/provider/posts';
 import { Content } from '@/utils/content';
 import { Metadata } from 'next';
 import Image from 'next/image';
@@ -89,10 +89,12 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           )}
         </div>
 
-        <div className="prose prose-lg max-w-none">
+        <div className="prose md:prose-md lg:prose-lg max-w-none">
           <Content data={article.content} />
         </div>
       </article>
     </main>
   );
 }
+ 
+

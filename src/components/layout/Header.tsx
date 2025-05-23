@@ -25,13 +25,13 @@ export default function Header() {
             <Link href="/" className="text-gray-700 hover:text-blue-600 font-medium">
               Início
             </Link>
-            <Link href="/services" className="text-gray-700 hover:text-blue-600 font-medium">
+            <Link href="/servicos" className="text-gray-700 hover:text-blue-600 font-medium">
               Serviços
             </Link>
             <Link href="/blog" className="text-gray-700 hover:text-blue-600 font-medium">
               Blog
             </Link>
-            <Link href="/contact" className="text-gray-700 hover:text-blue-600 font-medium">
+            <Link href="/contato" className="text-gray-700 hover:text-blue-600 font-medium">
               Contato
             </Link>
           </nav>
@@ -78,7 +78,7 @@ export default function Header() {
               Início
             </Link>
             <Link
-              href="/services"
+              href="/servicos"
               className="block px-3 py-2 text-gray-700 hover:bg-gray-50 hover:text-blue-600 rounded-md font-medium"
               onClick={() => setMobileMenuOpen(false)}
             >
@@ -92,7 +92,7 @@ export default function Header() {
               Blog
             </Link>
             <Link
-              href="/contact"
+              href="/contato"
               className="block px-3 py-2 text-gray-700 hover:bg-gray-50 hover:text-blue-600 rounded-md font-medium"
               onClick={() => setMobileMenuOpen(false)}
             >

@@ -1,12 +1,11 @@
 'use server';
 
-import { email } from '@/provider/email';
+import { Email } from '@/provider/email';
 import { SendEmailContactInput } from '@/provider/email/email.dto';
 
 export const sendEmail = async (input: SendEmailContactInput) => {
   try {
-    await email.sendEmailContact(input);
-
+    await new Email().sendEmailContact(input);
     return {
       message: 'success',
       error: undefined,

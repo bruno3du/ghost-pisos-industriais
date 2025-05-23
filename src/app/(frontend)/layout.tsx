@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Ghost Pisos Industriais | Pisos Premium',
+    title: 'Ghost Pisos Industriais | Pisos industriais',
     description:
       'Especialistas em soluções de piso industrial incluindo piso epóxi, concreto polido e reparos de piso.',
     images: ['/images/twitter-image.jpg'],
@@ -70,9 +70,7 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  verification: {
-    google: 'verificação_google_aqui',
-  },
+  
 };
 
 export default function RootLayout({

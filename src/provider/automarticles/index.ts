@@ -8,7 +8,7 @@ import {
   AutoPostEvents,
 } from '@/provider/automarticles/types/types';
 import { CategoryProvider } from '@/provider/categories/categories';
-import { PostProvider } from '@/provider/post';
+import { PostProvider } from '@/provider/posts';
 import { UploadProvider } from '@/provider/upload';
 import { HTTPError } from '@strapi/client';
 import { writeFileSync } from 'fs';

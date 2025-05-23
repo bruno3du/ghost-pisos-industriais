@@ -1,5 +1,5 @@
 import { AutomPost } from '@/provider/automarticles/types/types';
-import { Post } from '@/provider/post/types';
+import { Post } from '@/provider/posts/types';
 import { htmlToLexical } from '@/utils/html-to-lexical';
 
 export const transformPost = async (content: AutomPost): Promise<Post> => {

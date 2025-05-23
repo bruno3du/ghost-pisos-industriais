@@ -1,6 +1,6 @@
 import { Media } from '@/payload-types';
 import { PayloadServer } from '@/provider/payload';
-import { PostProvider } from '@/provider/post';
+import { PostProvider } from '@/provider/posts';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -52,3 +52,5 @@ export default async function BlogPage() {
     </main>
   );
 }
+
+

@@ -12,15 +12,5 @@ export const htmlToLexical = async (html: string) => {
     JSDOM,
   });
 
-  value.root.children.forEach((child) => {
-    console.log(child.type);
-  });
-
-  const dom = new JSDOM(html)
-
-  console.log(dom.serialize(), "serialize");
-  console.log(dom.window.document.body.childNodes, "dom");
-  
-
   return value;
 };

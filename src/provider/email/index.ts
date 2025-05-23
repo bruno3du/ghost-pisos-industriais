@@ -2,7 +2,7 @@ import { SendEmailContactInput } from './email.dto';
 import { contactTemplate } from './templates/contact';
 import { transporter } from './transporter';
 
-class Email {
+export class Email {
   sendEmailContact = async ({
     company,
     email,
@@ -26,5 +26,3 @@ class Email {
     });
   };
 }
-
-export const email = new Email();

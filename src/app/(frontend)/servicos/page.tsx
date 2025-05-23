@@ -107,7 +107,7 @@ export default function ServicesPage() {
                   ))}
                 </ul>
                 <Link
-                  href={`/contact?service=${service.id}`}
+                  href={`/contato?service=${service.id}`}
                   className="px-6 py-3 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition inline-block"
                 >
                   Solicitar Orçamento

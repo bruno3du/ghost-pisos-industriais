@@ -1,7 +1,7 @@
 import { Hero } from '@/components/page/home/hero';
 import { Media } from '@/payload-types';
 import { PayloadServer } from '@/provider/payload';
-import { PostProvider } from '@/provider/post';
+import { PostProvider } from '@/provider/posts';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -11,19 +11,19 @@ const services = [
     description:
       'Pisos duráveis e resistentes a produtos químicos, perfeitos para ambientes industriais',
     icon: '/images/epoxy-icon.png',
-    link: '/services#epoxy-flooring',
+    link: '/servicos#epoxy-flooring',
   },
   {
     title: 'Concreto Polido',
     description: 'Pisos sustentáveis, de baixa manutenção e com excelente durabilidade',
     icon: '/images/concrete-icon.png',
-    link: '/services#polished-concrete',
+    link: '/servicos#polished-concrete',
   },
   {
     title: 'Reparos de Piso',
     description: 'Restaure seu piso industrial à sua condição original',
     icon: '/images/repair-icon.png',
-    link: '/services#floor-repairs',
+    link: '/servicos#floor-repairs',
   },
 ];
 
@@ -57,7 +57,7 @@ export default async function Home() {
           </div>
           <div className="text-center mt-10">
             <Link
-              href="/services"
+              href="/servicos"
               className="px-6 py-3 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition"
             >
               Ver Todos os Serviços
@@ -123,7 +123,7 @@ export default async function Home() {
             piso industrial.
           </p>
           <Link
-            href="/contact"
+            href="/contato"
             className="px-8 py-4 bg-white text-blue-600 rounded-md font-bold hover:bg-gray-100 transition"
           >
             Solicitar Orçamento

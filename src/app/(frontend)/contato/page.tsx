@@ -1,5 +1,11 @@
 import { SendEmailContactInput } from '@/provider/email/email.dto';
+import { GlobalProvider } from '@/provider/globals';
+import { PayloadServer } from '@/provider/payload';
+import { Content } from '@/utils/content';
+import { formatPhoneNumber } from '@/utils/phone';
+import { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical';
 import { Metadata } from 'next';
+import Link from 'next/link';
 import { sendEmail } from './action/send-email';
 import SubmitButton from './components/submit-button';
 
@@ -9,31 +15,15 @@ export const metadata: Metadata = {
     'Entre em contato com nossos especialistas em piso industrial para uma consulta gratuita e orçamento.',
 };
 
-const data = [
-  {
-    title: 'Horário',
-    description: 'Segunda - Sexta: 8h - 17h\nSábado: 9h - 14h\nDomingo: Fechado',
-  },
-  {
-    title: 'Telefone',
-    description: '(19) 98325-6973',
-  },
-  {
-    title: 'Email',
-    description: 'contato@ghostpisosindustriais.com',
-  },
-  {
-    title: 'Endereço',
-    description: 'Rua Industrial, 123\nDistrito Industrial\nCampinas, SP 13087-450',
-  },
-];
+export default async function ContactPage() {
+  const contact = await new GlobalProvider(await new PayloadServer().execute()).contact();
 
-export default function ContactPage() {
   const handleSendContact = async (form: FormData) => {
     'use server';
     const mail = Object.fromEntries(form);
     await sendEmail(mail as unknown as SendEmailContactInput);
   };
+
   return (
     <main className="flex min-h-screen flex-col items-center py-24">
       <div className="container mx-auto px-4 max-w-6xl">
@@ -49,17 +39,32 @@ export default function ContactPage() {
             </p>
 
             <div className="space-y-6">
-              {data.map((item, index) => (
-                <div key={index}>
-                  <h3 className="font-bold mb-2">{item.title}</h3>
-                  <p
-                    className="text-gray-600 whitespace-pre-line"
-                    dangerouslySetInnerHTML={{
-                      __html: item.description,
-                    }}
-                  />
+              <div>
+                <h3 className="font-bold mb-2">Horário</h3>
+                <div className="text-gray-600 whitespace-pre-line">
+                  <Content data={contact.hours as SerializedEditorState} />
                 </div>
-              ))}
+              </div>
+              <div>
+                <h3 className="font-bold mb-2">Telefone</h3>
+                <Link className="text-gray-600" href={`tel:${contact.phone}`}>
+                  {formatPhoneNumber(contact.phone as string)}
+                </Link>
+              </div>
+              <div>
+                <h3 className="font-bold mb-2">Email</h3>
+                <Link className="text-gray-600" href={`mailto:${contact.email}`}>
+                  {contact.email}
+                </Link>
+              </div>
+              {contact.address && (
+                <div>
+                  <h3 className="font-bold mb-2">Endereço</h3>
+                  <div className="text-gray-600 whitespace-pre-line">
+                    <Content data={contact.address as SerializedEditorState} />
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 

@@ -58,12 +58,12 @@ export default function manifest(): MetadataRoute.Manifest {
     shortcuts: [
       {
         name: 'Contato',
-        url: '/contact',
+        url: '/contato',
         description: 'Entre em contato conosco',
       },
       {
         name: 'Serviços',
-        url: '/services',
+        url: '/servicos',
         description: 'Nossos serviços de pisos industriais',
       },
     ],

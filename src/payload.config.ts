@@ -9,6 +9,7 @@ import sharp from 'sharp';
 import { fileURLToPath } from 'url';
 
 import { Categories } from '@/app/(payload)/collections/categories/categories';
+import { Contact } from '@/app/(payload)/global/contact';
 import { Media } from './app/(payload)/collections/media';
 import { Posts } from './app/(payload)/collections/posts/posts';
 import { Users } from './app/(payload)/collections/users';
@@ -24,6 +25,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, Posts, Categories],
+  globals: [Contact],
   editor: lexicalEditor({}),
  
   secret: process.env.PAYLOAD_SECRET || '',

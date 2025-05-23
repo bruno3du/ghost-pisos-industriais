@@ -4,6 +4,7 @@ import { useFormStatus } from 'react-dom';
 
 export default function SubmitButton() {
   const status = useFormStatus();
+
   return (
     <button
       type="submit"

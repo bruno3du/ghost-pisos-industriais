@@ -112,7 +112,7 @@ export default function PortfolioPage() {
         <div className="mt-16 text-center">
           <h2 className="text-2xl font-bold mb-6">Pronto para transformar seu piso industrial?</h2>
           <Link
-            href="/contact"
+            href="/contato"
             className="px-6 py-3 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition"
           >
             Entre em Contato para um Orçamento Gratuito

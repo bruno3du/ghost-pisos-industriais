@@ -1,4 +1,4 @@
-import { CreatePostInput, UpdatePostInput } from '@/provider/post/types';
+import { CreatePostInput, UpdatePostInput } from '@/provider/posts/types';
 import { BasePayload } from 'payload';
 
 export class PostProvider {

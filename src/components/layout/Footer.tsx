@@ -1,9 +1,16 @@
 import logo from '@/assets/images/logo-white.png';
+import { GlobalProvider } from '@/provider/globals';
+import { PayloadServer } from '@/provider/payload';
+import { Content } from '@/utils/content';
+import { formatPhoneNumber } from '@/utils/phone';
+import { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical';
 import { Mail } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function Footer() {
+export default async function Footer() {
+  const contact = await new GlobalProvider(await new PayloadServer().execute()).contact();
+
   return (
     <footer className="bg-gray-900 text-white">
       <div className="container mx-auto px-4  py-12">
@@ -56,7 +63,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="text-gray-400 hover:text-white">
+                <Link href="/servicos" className="text-gray-400 hover:text-white">
                   Serviços
                 </Link>
               </li>
@@ -66,29 +73,29 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-gray-400 hover:text-white">
+                <Link href="/contato" className="text-gray-400 hover:text-white">
                   Contato
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Services */}
+          {/* servicos */}
           <div>
             <h3 className="text-lg font-bold mb-4">Nossos Serviços</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/services#epoxy-flooring" className="text-gray-400 hover:text-white">
+                <Link href="/servicos#epoxy-flooring" className="text-gray-400 hover:text-white">
                   Piso Epóxi
                 </Link>
               </li>
               <li>
-                <Link href="/services#polished-concrete" className="text-gray-400 hover:text-white">
+                <Link href="/servicos#polished-concrete" className="text-gray-400 hover:text-white">
                   Concreto Polido
                 </Link>
               </li>
               <li>
-                <Link href="/services#floor-repairs" className="text-gray-400 hover:text-white">
+                <Link href="/servicos#floor-repairs" className="text-gray-400 hover:text-white">
                   Reparos de Piso
                 </Link>
               </li>
@@ -114,13 +121,7 @@ export default function Footer() {
                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                   />
                 </svg>
-                <span>
-                  Rua Industrial, 123
-                  <br />
-                  Distrito Industrial
-                  <br />
-                  Campinas, SP 13087-450
-                </span>
+                <Content data={contact.address as SerializedEditorState} />
               </li>
               <li className="flex items-center">
                 <svg className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -131,13 +132,13 @@ export default function Footer() {
                     d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                   />
                 </svg>
-                <Link href="tel:+5519983256973">(19) 98325-6973</Link>
+                <Link href={`tel:${contact.phone}`}>
+                  {formatPhoneNumber(contact.phone as string)}
+                </Link>
               </li>
               <li className="flex items-center">
                 <Mail className="size-6 mr-2 shrink-0" />
-                <Link href="mailto:contato@ghostpisosindustriais.com">
-                  contato@ghostpisosindustriais.com
-                </Link>
+                <Link href={`mailto:${contact.email}`}>{contact.email}</Link>
               </li>
             </ul>
           </div>
