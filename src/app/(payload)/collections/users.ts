@@ -7,6 +7,7 @@ export const Users: CollectionConfig = {
   },
   auth: {
     lockTime: 0,
+    useAPIKey: true,
   },
   fields: [
     // Email added by default

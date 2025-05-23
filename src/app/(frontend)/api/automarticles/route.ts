@@ -6,9 +6,15 @@ import { NextRequest, NextResponse } from 'next/server';
 export const POST = async (request: NextRequest) => {
   try {
     const body = await request.json();
+    const token = request.nextUrl.searchParams.get('token');
+
     const response = await new AutomArticles(await new PayloadServer().execute()).execute(
       body as AutomContent
     );
+
+    if (!token || token !== process.env.AUTOMARTICLES_TOKEN_WEBHOOK) {
+      return NextResponse.json({ error: 'Something went wrong' }, { status: 400 });
+    }
 
     if (response && typeof response === 'object' && 'message' in response && !response.success) {
       throw new Error(JSON.stringify(response.message));
